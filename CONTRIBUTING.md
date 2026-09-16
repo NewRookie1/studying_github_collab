@@ -52,3 +52,9 @@ git push
 
 ## First task
 Read `practice/intro.md`, then add yourself to `practice/team-roster.json` via a PR. 🎉
+
+
+
+
+
+hellow duniya
