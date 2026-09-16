@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Example Member",
+    "github": "NewRookie1",
+    "favoriteLang": "JavaScript",
+    "learned": ["clone"]
+  },
+  {
+    "name": "Ada Lovelace",
+    "github": "ada-example",
+    "favoriteLang": "Python",
+    "learned": ["branch", "commit", "pr"]
+  }
+]

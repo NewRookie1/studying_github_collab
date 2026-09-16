@@ -1,0 +1,12 @@
+CONFLICT PRACTICE FILE — INTENTIONALLY SIMPLE
+================================================
+Instructions:
+1. Person A: on branch a/meet-day, change the line below to "Monday", commit, push, open PR but DO NOT merge yet.
+2. Person B: on branch b/meet-day, change the SAME line to "Friday", commit, push, open PR and MERGE it.
+3. Person A: try to merge now -> you will get a conflict. Resolve it (pick one day or both), commit, push. Merge!
+
+The line to fight over:
+--------------------------
+Our study group meets on FRIDAY.
+--------------------------
+Tip: conflicts show <<<<<<< HEAD markers. Delete them, keep the final text, then git add + commit.

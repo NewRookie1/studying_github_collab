@@ -1,0 +1,9 @@
+#*
+!.gitignore
+!README.md
+!CONTRIBUTING.md
+!index.html
+!styles.css
+!app.js
+!practice/
+.DS_Store

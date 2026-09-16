@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GitHub Collab Lab — Learn GitHub Completely</title>
+<meta name="description" content="A hands-on demo website for learning GitHub collaboration completely: cloning, branching, committing, PRs, conflicts, issues, actions." />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand"><span class="logo">⑂</span> Collab Lab</div>
+    <nav class="links">
+      <a href="#path">Path</a>
+      <a href="#modules">Modules</a>
+      <a href="#labs">Labs</a>
+      <a href="#quiz">Quiz</a>
+      <a href="#checklist">Checklist</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn small" href="https://github.com/NewRookie1/studying_github_collab" target="_blank" rel="noopener">Open Repo ↗</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="pill">Demo site • for <code>studying_github_collab</code></div>
+      <h1>Learn GitHub collaboration <span class="grad">completely</span>, by doing.</h1>
+      <p class="sub">Clone, branch, commit, push, open a PR, resolve a conflict, review code — all with guided missions that use your real repo. No slides. Just practice.</p>
+      <div class="repo-box">
+        <code id="repoUrl">https://github.com/NewRookie1/studying_github_collab.git</code>
+        <button onclick="copyRepo()" class="btn">Copy</button>
+      </div>
+      <div class="hero-cta">
+        <a href="#labs" class="btn primary">Start Lab 1 →</a>
+        <a href="#modules" class="btn ghost">View 8 modules</a>
+      </div>
+      <div class="mini-stats">
+        <div><strong>8</strong><span>modules</span></div>
+        <div><strong>5</strong><span>interactive labs</span></div>
+        <div><strong>10</strong><span>quiz Qs</span></div>
+        <div><strong>100%</strong><span>beginner friendly</span></div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="card-head"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span><span class="title">team workflow</span></div>
+      <div class="graph">
+        <div class="lane"><span class="tag main">main</span><div class="nodes"><i class="on"></i><i class="on"></i><i class="on"></i><i id="mergeDot"></i></div></div>
+        <div class="lane"><span class="tag feat">you / add-profile</span><div class="nodes"><i></i><i class="on f"></i><i class="on f"></i><i></i></div></div>
+        <div class="lane"><span class="tag feat2">teammate / fix-typo</span><div class="nodes"><i></i><i class="on f2"></i><i></i><i></i></div></div>
+        <div class="merge-line">merge via Pull Request →</div>
+      </div>
+      <pre class="code">$ git clone https://github.com/NewRookie1/studying_github_collab.git
+$ git checkout -b you/add-profile
+$ git add . && git commit -m "Add my profile"
+$ git push -u origin you/add-profile
+# → Open PR → Review → Merge ✓</pre>
+    </div>
+  </div>
+</section>
+
+<section id="path" class="section">
+  <div class="wrap">
+    <h2>Your learning path</h2>
+    <p class="muted">Follow in order. Each module ends with a 2-minute mission in your real repo.</p>
+    <div class="path-grid">
+      <div class="step"><b>1</b><h3>Setup</h3><p>Git, GitHub account, SSH/HTTPS, config.</p></div>
+      <div class="step"><b>2</b><h3>Repos & Cloning</h3><p>Fork vs clone, remote, fetch/pull.</p></div>
+      <div class="step"><b>3</b><h3>Branching</h3><p>Never commit to main. One branch = one change.</p></div>
+      <div class="step"><b>4</b><h3>Commits</h3><p>Staging, messages, history.</p></div>
+      <div class="step"><b>5</b><h3>Push & Sync</h3><p>Push, pull, fetch, upstream.</p></div>
+      <div class="step"><b>6</b><h3>Pull Requests</h3><p>Propose, review, merge.</p></div>
+      <div class="step"><b>7</b><h3>Conflicts</h3><p>Fix merge conflicts without panic.</p></div>
+      <div class="step"><b>8</b><h3>Team tools</h3><p>Issues, Projects, Actions, rules.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="modules" class="section alt">
+  <div class="wrap">
+    <h2>8 modules — complete guide</h2>
+
+    <article class="mod"><div class="mod-n">1</div><div>
+      <h3>Setup: Git + GitHub in 5 minutes</h3>
+      <div class="cols">
+      <div><p><strong>Git</strong> = version control on your computer. <strong>GitHub</strong> = website to host repos and collaborate.</p>
+      <pre class="code">git --version
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+git config --global init.defaultBranch main</pre></div>
+      <div class="tip"><strong>Mission:</strong> Create a GitHub account, install Git, run the 3 config commands above. Verify with <code>git config --list</code>.</div>
+      </div>
+    </div></article>
+
+    <article class="mod"><div class="mod-n">2</div><div>
+      <h3>Repos, Fork, Clone, Remote</h3>
+      <p>A <strong>repository</strong> = project folder + history. <strong>Clone</strong> = download it. <strong>Fork</strong> = your own copy on GitHub. <strong>Remote</strong> = GitHub's address (called <code>origin</code>).</p>
+      <pre class="code">git clone https://github.com/NewRookie1/studying_github_collab.git
+cd studying_github_collab
+git remote -v
+git status
+git fetch origin
+git pull origin main</pre>
+      <div class="tip"><strong>Mission:</strong> Clone the demo repo above. Run <code>git status</code> and <code>git log --oneline -5</code>. You should see history.</div>
+    </div></article>
+
+    <article class="mod"><div class="mod-n">3</div><div>
+      <h3>Branching: the #1 collab rule</h3>
+      <p><strong>Golden rule: never commit directly to <code>main</code>.</strong> Create a branch per task: <code>name/what-you-do</code>, e.g. <code>ana/add-bio</code>.</p>
+      <pre class="code">git checkout main
+git pull origin main
+git checkout -b ana/add-bio
+git branch          # list branches
+git switch main     # modern way to switch</pre>
+      <div class="tip"><strong>Naming:</strong> <code>feat/…</code>, <code>fix/…</code>, <code>docs/…</code>, or <code>yourname/…</code>. One branch = one PR.</div>
+    </div></article>
+
+    <article class="mod"><div class="mod-n">4</div><div>
+      <h3>Add, Commit, History</h3>
+      <p>工作流程: edit → <code>add</code> (stage) → <code>commit</code> (snapshot) → <code>push</code> (upload). Write messages in imperative mood.</p>
+      <pre class="code">git status
+git add practice/team-roster.json
+git commit -m "Add Ana to team roster"
+git log --oneline --graph -8
+git show HEAD --stat</pre>
+      <div class="tip"><strong>Good messages:</strong> “Add…”, “Fix…”, “Update…”. Bad: “asdf”, “final final v2”. <strong>Mission:</strong> edit <code>practice/team-roster.json</code>, commit on your branch.</div>
+    </div></article>
+
+    <article class="mod"><div class="mod-n">5</div><div>
+      <h3>Push, Pull, Fetch & Sync</h3>
+      <pre class="code">git push -u origin ana/add-bio     # first push sets upstream
+git push                            # after that
+git pull --rebase origin main       # get latest main into your branch
+git fetch origin                    # download without merging
+git diff main...HEAD                # what will your PR change?</pre>
+      <div class="tip"><strong>Mission:</strong> Push your branch. Open GitHub → you’ll see a yellow “Compare & pull request” banner.</div>
+    </div></article>
+
+    <article class="mod"><div class="mod-n">6</div><div>
+      <h3>Pull Requests: how teams merge</h3>
+      <p>A <strong>PR</strong> = proposal to merge your branch into <code>main</code>. Teammates review, comment, approve, then merge.</p>
+      <ol class="list">
+        <li>Push branch → <strong>Compare & pull request</strong></li>
+        <li>Title clearly: “Add Ana bio + photo” — link issue with <code>Closes #3</code></li>
+        <li>Ask for review, respond to comments, push fixes (same branch updates PR)</li>
+        <li><strong>Squash & merge</strong> or <strong>Merge commit</strong> → delete branch</li>
+      </ol>
+      <div class="tip"><strong>Review etiquette:</strong> be kind, suggest code with <code>```suggestion</code>, approve when LGTM. Try Lab 3 below.</div>
+    </div></article>
+
+    <article class="mod"><div class="mod-n">7</div><div>
+      <h3>Merge conflicts (you will get them!)</h3>
+      <p>Conflict = both changed the same lines. Git pauses and asks you to choose.</p>
+      <pre class="code"><<<<<<< HEAD
+Hello from main
+=======
+Hello from your branch
+>>>>>>> ana/add-bio</pre>
+      <p>Steps: <code>git pull origin main</code> → open file → delete markers, keep correct code → <code>git add</code> → <code>git commit</code> → <code>git push</code>. Practice in <strong>Lab 4</strong> and in <code>practice/conflict-demo.txt</code>.</p>
+    </div></article>
+
+    <article class="mod"><div class="mod-n">8</div><div>
+      <h3>Team tools: Issues, Projects, Actions, Rules</h3>
+      <ul class="list">
+        <li><strong>Issues:</strong> task tracker. Assign, label (<code>good first issue</code>), link PRs with “Closes #n”.</li>
+        <li><strong>Projects (kanban):</strong> Todo → In Progress → Done.</li>
+        <li><strong>Actions (CI):</strong> auto-test every PR. Red ✗ = fix before merge.</li>
+        <li><strong>Branch protection:</strong> Settings → require PR + 1 approval before merging to main.</li>
+        <li><strong>CODEOWNERS / templates:</strong> auto-request reviewers, PR & issue templates (see <code>.github/</code> in a real project).</li>
+      </ul>
+      <div class="tip"><strong>Mission:</strong> On GitHub, open an Issue “Add my name to roster”, assign yourself, then open a PR that says “Closes #1”. Watch it auto-close on merge.</div>
+    </div></article>
+  </div>
+</section>
+
+<section id="labs" class="section">
+  <div class="wrap">
+    <h2>Interactive labs (no install)</h2>
+    <p class="muted">Simulate the real thing right here, then repeat for real in your terminal.</p>
+
+    <div class="lab">
+      <h3>Lab 1 — Terminal simulator</h3>
+      <p>Type <code>help</code>, then try: <code>clone</code>, <code>branch ana/add-bio</code>, <code>add</code>, <code>commit "Add Ana"</code>, <code>push</code>, <code>pr</code>, <code>log</code>.</p>
+      <div class="term"><div id="termOut" class="term-out"><div>$ Welcome to Collab Lab terminal. Type 'help'.</div></div>
+      <div class="term-in"><span>$</span><input id="termIn" placeholder="type a command…" autocomplete="off" /></div></div>
+    </div>
+
+    <div class="lab-grid">
+      <div class="lab">
+        <h3>Lab 2 — Branch visualizer</h3>
+        <p>Click commits to see how a feature branch diverges and merges.</p>
+        <div class="viz">
+          <button data-c="1" class="on">main ●</button>
+          <button data-c="2">main ●</button>
+          <button data-c="3">branch ⑂</button>
+          <button data-c="4">branch ⑂</button>
+          <button data-c="5">merge ⑃</button>
+        </div>
+        <p id="vizOut" class="muted">main is at commit 1. Create a branch to start work.</p>
+      </div>
+
+      <div class="lab">
+        <h3>Lab 3 — PR simulator</h3>
+        <p>Walk the full review flow.</p>
+        <ol id="prSteps" class="pr-steps">
+          <li><button onclick="prStep(1)">1. Push branch</button></li>
+          <li><button onclick="prStep(2)">2. Open PR</button></li>
+          <li><button onclick="prStep(3)">3. Request review</button></li>
+          <li><button onclick="prStep(4)">4. Approve & merge</button></li>
+        </ol>
+        <p id="prOut" class="muted">Status: no branch pushed yet.</p>
+      </div>
+    </div>
+
+    <div class="lab">
+      <h3>Lab 4 — Conflict resolver</h3>
+      <p>Both edited the same line. Choose what to keep, then “commit merge”.</p>
+      <pre class="code">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD (main)
+Our study group meets on <b>Monday</b>.
+=======
+Our study group meets on <b>Friday</b>.
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; you/add-day</pre>
+      <div class="row">
+        <button class="btn small" onclick="resolve('main')">Keep Monday (main)</button>
+        <button class="btn small" onclick="resolve('you')">Keep Friday (mine)</button>
+        <button class="btn small" onclick="resolve('both')">Keep both</button>
+      </div>
+      <p id="confOut" class="muted">Waiting for your resolution…</p>
+    </div>
+  </div>
+</section>
+
+<section id="quiz" class="section alt">
+  <div class="wrap">
+    <h2>Quiz — test yourself</h2>
+    <div id="quizBox" class="quiz"></div>
+    <div class="row"><button class="btn primary" onclick="gradeQuiz()">Check answers</button><span id="quizScore" class="muted"></span></div>
+  </div>
+</section>
+
+<section id="checklist" class="section">
+  <div class="wrap cols2">
+    <div>
+      <h2>Graduation checklist</h2>
+      <p class="muted">Progress saves in your browser. Do these for real in <code>studying_github_collab</code>.</p>
+      <ul id="checks" class="checks"></ul>
+    </div>
+    <div class="card">
+      <h3>Cheat sheet</h3>
+      <pre class="code">git clone &lt;url&gt;
+git checkout -b name/task
+git add . 
+git commit -m "Verb + what"
+git push -u origin name/task
+# open PR on GitHub → review → merge
+git checkout main && git pull
+git branch -d name/task</pre>
+      <h3>Glossary</h3>
+      <p class="muted"><b>main</b>: protected default branch. <b>PR</b>: merge proposal. <b>Fork</b>: personal copy. <b>Review</b>: approve/comment. <b>CI</b>: auto tests. <b>LGTM</b>: “looks good to me”.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="section alt">
+  <div class="wrap">
+    <h2>FAQ</h2>
+    <details open><summary>Should I commit to main?</summary><p>No. Always branch. Protect <code>main</code> in Settings → Branches → Require a pull request.</p></details>
+    <details><summary>Fork or branch?</summary><p>Same repo + same team → <strong>branch</strong>. Outside contributor / classroom with no write access → <strong>fork</strong>, then PR from fork.</p></details>
+    <details><summary>I messed up — help?</summary><p><code>git status</code> first. Wrong commit message: <code>git commit --amend</code>. Undo unstaged: <code>git restore file</code>. Unstage: <code>git restore --staged file</code>. Ask before <code>reset --hard</code>.</p></details>
+    <details><summary>HTTPS or SSH?</summary><p>HTTPS + personal access token is easiest to start. SSH is best long-term (no passwords).</p></details>
+  </div>
+</section>
+
+<footer><div class="wrap foot">
+  <span>Collab Lab — demo for <a href="https://github.com/NewRookie1/studying_github_collab">studying_github_collab</a></span>
+  <span class="muted">Practice repo workflow: branch → commit → PR → merge 🎉</span>
+</div></footer>
+
+<script src="app.js"></script>
+</body>
+</html>
